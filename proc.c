@@ -15,6 +15,7 @@ struct {
 static struct proc *initproc;
 
 int nextpid = 1;
+int count_calls = 0;
 extern void forkret(void);
 extern void trapret(void);
 
@@ -531,4 +532,11 @@ procdump(void)
     }
     cprintf("\n");
   }
+}
+
+int
+getsyscallinfo()
+{
+  cprintf("System call count: %d \n", count_calls);
+  return 22;
 }
